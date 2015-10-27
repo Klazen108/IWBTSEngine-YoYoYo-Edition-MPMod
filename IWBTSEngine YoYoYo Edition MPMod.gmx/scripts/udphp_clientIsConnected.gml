@@ -23,3 +23,4 @@ if (!ds_map_exists(global.udphp_clients_udp,client_id)) {
 }
 
 return ds_map_find_value(global.udphp_clients_connected,client_id);
+

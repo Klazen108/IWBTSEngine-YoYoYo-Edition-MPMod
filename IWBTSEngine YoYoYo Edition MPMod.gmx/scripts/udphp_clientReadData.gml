@@ -51,3 +51,4 @@ buffer_seek(client_buffer, buffer_seek_start, 0);
 buffer_write(client_buffer, buffer_s8, udphp_packet.DATAREQ);
 udphp_handleerror(udphp_dbglvl.DEBUG, udphp_dbgtarget.CLIENT, client_id, "ClientReadData. Asking for Server data");
 network_send_udp(client_udp,udphp_clientGetServerIP(client_id),udphp_clientGetServerPort(client_id), client_buffer, buffer_tell(client_buffer) );
+

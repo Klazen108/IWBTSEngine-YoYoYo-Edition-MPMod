@@ -23,3 +23,4 @@ var interval = argument1;
 var variables = ""; //Doesn't matter for builtin variables
 
 mp_add(groupname,variables,mp_buffer_type.BUILTINPOSITION,interval);
+

@@ -36,3 +36,4 @@ if (go)
 
     return self.htme_mp_player == global.htme_object.playerhash;
 //else return false;
+

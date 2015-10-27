@@ -29,3 +29,4 @@ if (is_undefined(queue)) {
 }
 
 return queue;
+

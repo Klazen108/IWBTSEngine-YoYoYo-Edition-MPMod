@@ -34,3 +34,4 @@ buffer_seek(self.buffer, buffer_seek_relative, buffer_tell(send_buffer));
 
 htme_debugger("htme_sendSingleSignedPacket",htme_debug.DEBUG,"Sending signed packet");
 network_send_udp( self.socketOrServer, htme_playerMapIP(target), htme_playerMapPort(target), self.buffer, buffer_tell(self.buffer));
+

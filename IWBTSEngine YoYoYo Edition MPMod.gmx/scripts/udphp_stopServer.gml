@@ -35,3 +35,4 @@ ds_map_destroy(global.udphp_server_incoming_requests2);
 global.udphp_server_incoming_requests2 = -1;
 global.udphp_server_players = -1;
 udphp_handleerror(udphp_dbglvl.DEBUG, udphp_dbgtarget.SERVER, 0, "Server stopped");
+

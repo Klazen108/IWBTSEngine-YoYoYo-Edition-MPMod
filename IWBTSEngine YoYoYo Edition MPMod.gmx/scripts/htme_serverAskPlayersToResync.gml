@@ -29,3 +29,4 @@ buffer_seek(self.buffer, buffer_seek_start, 0);
 buffer_write(self.buffer, buffer_s8, htme_packet.SERVER_PLEASE_RESYNC);
 
 htme_sendNewSignedPacket(self.buffer,all,exclude,playerroom);
+

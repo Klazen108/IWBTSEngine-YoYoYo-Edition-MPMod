@@ -32,3 +32,4 @@ if (datatype == buffer_string || datatype == buffer_bool)
 if (newval > instvar+tolerance || newval < instvar-tolerance)
    return newval;
 return instvar;
+

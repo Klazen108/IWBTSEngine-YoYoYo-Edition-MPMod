@@ -13,3 +13,4 @@ for(var i=0; i<ds_map_size(m); i+=1) {
     key = ds_map_find_next(m, key);
 }
 return undefined;
+

@@ -49,3 +49,4 @@ if (global.htme_object.debuglevel != htme_debug.NONE && level >= global.htme_obj
     if (global.htme_object.debuglevel == htme_debug.TRAFFIC && level != htme_debug.TRAFFIC) exit;
     show_debug_message("MULTIPLAYER ENGINE ["+string(current_time)+"|"+string(current_hour)+":"+string(current_minute)+":"+string(current_second)+"] "+scriptname+" - "+levelname+" - "+message);
 }
+

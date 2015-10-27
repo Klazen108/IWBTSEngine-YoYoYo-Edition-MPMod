@@ -36,3 +36,4 @@ ds_map_delete(global.udphp_clients_timeout,client_id);
 ds_map_delete(global.udphp_clients_directconnect,client_id);
 ds_map_delete(global.udphp_clients_connected,client_id);
 udphp_handleerror(udphp_dbglvl.DEBUG, udphp_dbgtarget.CLIENT, client_id, "Client stopped...");
+

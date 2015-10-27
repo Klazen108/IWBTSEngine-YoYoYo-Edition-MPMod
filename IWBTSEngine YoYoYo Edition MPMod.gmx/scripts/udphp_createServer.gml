@@ -59,7 +59,7 @@ global.udphp_server_players = player_list;
 //counter is used for server master server reconnection
 //Set to 0 so when udphp_serverPunch is run, we will connect to the master server
 global.udphp_server_counter = 0;
-//incoming_requests stores all client ips with ports that are not yet connected but are trying to via hole punchingÂ´
+//incoming_requests stores all client ips with ports that are not yet connected but are trying to via hole punching´
 //+Timeouts for connections with incoming requests
 //global.udphp_server_incoming_requests<ip:port,timeout>
 global.udphp_server_incoming_requests = ds_map_create();
@@ -81,3 +81,4 @@ global.udphp_server_data8 = "";
 
 udphp_handleerror(udphp_dbglvl.DEBUG, udphp_dbgtarget.SERVER, 0, "Started!");
 return true;
+

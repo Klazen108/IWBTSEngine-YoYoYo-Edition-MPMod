@@ -25,3 +25,4 @@
     str = string_delete(str,string_pos(sep,str),string_length(str));
     return str;
 }
+

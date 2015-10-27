@@ -189,3 +189,4 @@ if (self.tmp_instanceForceCreated) {
    htme_debugger("htme_serverRecieveVarGroup",htme_debug.WARNING,"Deleted a temporary instance.");
    with instance {instance_destroy();}
 }
+

@@ -18,3 +18,4 @@
 */
 
 return global.htme_object.gamename;
+

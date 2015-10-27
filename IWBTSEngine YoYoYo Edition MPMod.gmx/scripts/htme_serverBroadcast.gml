@@ -32,3 +32,4 @@ if (self.lan_intervalpnt >= self.lan_interval) {
 } else {
     self.lan_intervalpnt++;
 }
+

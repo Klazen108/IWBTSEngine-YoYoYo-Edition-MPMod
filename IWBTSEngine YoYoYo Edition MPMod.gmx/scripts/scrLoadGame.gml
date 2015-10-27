@@ -84,4 +84,6 @@ if (instance_exists(obj_htme)) {
 }
 else instance_create(global.savePlayerX,global.savePlayerY,objPlayer);
 
-room_goto(global.saveRoom);
+/*if (scrIsMultiplayerMode()) {
+    if (global.saveRoom == room) room_goto(rMultiplayerStaging);
+} else */room_goto(global.saveRoom);

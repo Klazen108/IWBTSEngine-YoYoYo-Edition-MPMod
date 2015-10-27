@@ -24,3 +24,4 @@ draw_rectangle(self.dbg_right-22-string_width(str),self.dbg_top+18,self.dbg_righ
 draw_set_colour(c_white);
 draw_text(self.dbg_right-20,self.dbg_top+20,str);
 draw_set_halign(fa_left);
+

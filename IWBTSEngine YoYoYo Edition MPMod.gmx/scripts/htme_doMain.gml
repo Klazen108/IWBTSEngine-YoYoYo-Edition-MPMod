@@ -104,3 +104,4 @@ if (self.dbgstate = vk_nokey) {
     draw_rectangle_colour(self.dbg_left,self.dbg_top,self.dbg_left+20+string_width(headstr2)+20,self.dbg_top+20+string_height(headstr2)+5,c_black,c_black,c_black,c_black,false);
     draw_text(self.dbg_left+20,self.dbg_top+20,headstr2)
 }
+

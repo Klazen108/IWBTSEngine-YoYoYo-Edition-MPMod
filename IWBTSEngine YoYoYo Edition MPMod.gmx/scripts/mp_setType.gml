@@ -28,3 +28,4 @@ if (!is_undefined(group)) {
         htme_debugger("mp_setType",htme_debug.WARNING,"You tried to change the type of a nonexistent variable group!");
     }
 }
+

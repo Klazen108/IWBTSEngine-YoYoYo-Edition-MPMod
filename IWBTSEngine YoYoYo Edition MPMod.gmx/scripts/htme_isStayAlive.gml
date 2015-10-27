@@ -24,3 +24,4 @@ if (instance_exists(inst)) {
     return backupEntry[? "stayAlive"];
 }
 else return false;
+

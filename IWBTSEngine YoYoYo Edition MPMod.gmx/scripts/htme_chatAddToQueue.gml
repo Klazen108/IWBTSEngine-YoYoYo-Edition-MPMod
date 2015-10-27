@@ -33,3 +33,4 @@ htme_debugger("htme_chatSend",htme_debug.CHATDEBUG,"CHAT API ["+channel+"] - Rec
 var queue = htme_chatAddChannel(channel);
 
 ds_queue_enqueue(queue, message);
+

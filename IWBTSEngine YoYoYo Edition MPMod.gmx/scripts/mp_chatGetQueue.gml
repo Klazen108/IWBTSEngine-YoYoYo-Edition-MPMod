@@ -23,3 +23,4 @@
 var channel = self.htme_mp_chatChannel;
 var all_queues = global.htme_object.chatQueues;
 return ds_map_find_value(all_queues, channel);
+

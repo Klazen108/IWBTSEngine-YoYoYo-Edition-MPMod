@@ -24,3 +24,4 @@ var name = argument0;
 with global.htme_object {
      return ds_map_find_value(self.globalsync,name);
 }
+

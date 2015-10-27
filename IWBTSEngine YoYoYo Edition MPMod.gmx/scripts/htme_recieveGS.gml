@@ -40,3 +40,4 @@ for (var i=0;i<num;i++) {
        htme_sendGS(all,name,player);
     }
 }
+

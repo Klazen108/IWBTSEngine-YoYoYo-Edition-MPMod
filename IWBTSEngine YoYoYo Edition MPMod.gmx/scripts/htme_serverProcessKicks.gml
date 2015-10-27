@@ -30,3 +30,4 @@ for(var i=0; i<ds_map_size(self.kickmap); i+=1) {
     }
     key = ds_map_find_next(self.kickmap, key);
 }
+

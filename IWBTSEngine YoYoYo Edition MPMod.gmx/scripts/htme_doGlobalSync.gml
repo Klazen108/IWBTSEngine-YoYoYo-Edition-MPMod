@@ -73,3 +73,4 @@ for(var i=0; i<ds_map_size(self.globalsync); i+=1) {
 
 draw_rectangle_colour(self.dbg_left,self.dbg_top,self.dbg_left+20+string_width(headstr)+20,self.dbg_top+20+string_height(headstr)+5,c_black,c_black,c_black,c_black,false);
 draw_text(self.dbg_left+20,self.dbg_top+20,headstr);
+

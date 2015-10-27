@@ -26,3 +26,4 @@ buffer_seek(self.buffer, buffer_seek_start, 0);
 buffer_write(self.buffer, buffer_s8, htme_packet.CLIENT_INSTANCEREMOVED);
 buffer_write(self.buffer, buffer_string, hash);
 htme_sendNewSignedPacket(self.buffer,noone);
+

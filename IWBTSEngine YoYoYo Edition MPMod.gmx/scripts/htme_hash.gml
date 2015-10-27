@@ -19,3 +19,4 @@ for (var i=0;i<8;i++) {
     str = str+chr(random_range(48,122));
 }
 return str;
+

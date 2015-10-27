@@ -23,3 +23,4 @@ self.htme_mp_chatChannel = argument0;
 with global.htme_object {
     htme_chatAddChannel(argument0);
 }
+

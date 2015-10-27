@@ -57,3 +57,4 @@ if (self.isServer) {
         htme_debugger("htme_chatSend",htme_debug.CHATDEBUG,"CHAT API ["+channel+"] - Sending message "+message+" to "+to+".");
     htme_sendNewSignedPacket(self.buffer,noone);
 }
+

@@ -18,9 +18,7 @@
 var inst = argument0;
 
 with inst {
-     with global.htme_object {
-        htme_debugger("htme_cleanUpInstance",htme_debug.DEBUG,"Cleaning up instance "+object_get_name(other.object_index)+"."+string(other.id));
-     }
+     
      //Clean up groups -> {entry} -> variables and remove from list
      var key= ds_map_find_first(self.htme_mp_groups);
      for(var i=0; i<ds_map_size(self.htme_mp_groups); i+=1) {
@@ -39,3 +37,4 @@ with inst {
      ds_map_destroy(self.htme_mp_vars);
      ds_map_destroy(self.htme_mp_vars_sync);
 }
+

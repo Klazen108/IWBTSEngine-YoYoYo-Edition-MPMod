@@ -51,3 +51,4 @@ if (to == "") {
     htme_sendNewSignedPacket(self.buffer,ip_port);
     htme_debugger("htme_chatSendServer",htme_debug.CHATDEBUG,"CHAT API ["+channel+"] - Sending or relaying message "+message+" to "+to+".");
 }
+

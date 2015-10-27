@@ -64,3 +64,4 @@ if (isLocal) {
         htme_debugger("mp_sync",htme_debug.DEBUG,"Added NETWORK instance "+object_get_name(v_object)+"."+string(v_id)+" to htme! Internal hash is not know yet.");
     }
 }
+

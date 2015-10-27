@@ -21,3 +21,4 @@ with (global.htme_object) {
     if (self.playerhash == "") return false;
     return self.isConnected;
 }
+

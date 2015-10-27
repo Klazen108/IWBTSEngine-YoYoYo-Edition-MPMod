@@ -142,3 +142,4 @@ if (err<0) udphp_handleerror(udphp_dbglvl.WARNING, udphp_dbgtarget.MAIN, 0, "udp
 network_send_raw(global.udphp_downloadServerlistSocket,buffer, buffer_tell(buffer) );
 udphp_handleerror(udphp_dbglvl.DEBUG, udphp_dbgtarget.MAIN, 0, "Requested server list.");
 buffer_delete(buffer);
+

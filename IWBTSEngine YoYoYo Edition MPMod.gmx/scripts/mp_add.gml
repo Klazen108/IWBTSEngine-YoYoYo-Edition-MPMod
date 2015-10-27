@@ -85,3 +85,4 @@ var v_object = self.object_index;
 with global.htme_object {
     htme_debugger("mp_add",htme_debug.DEBUG,"Added variable group "+groupname+" to instance "+object_get_name(v_object)+"."+string(v_id));
 }
+

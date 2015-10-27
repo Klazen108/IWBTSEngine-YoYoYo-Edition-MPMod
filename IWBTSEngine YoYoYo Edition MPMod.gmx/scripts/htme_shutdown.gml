@@ -33,3 +33,4 @@ ds_map_destroy(self.sPcountIN);
 self.sPcountIN = ds_map_create();
 if (ds_exists(self.chatQueues,ds_type_map))
     ds_map_destroy(self.chatQueues);
+

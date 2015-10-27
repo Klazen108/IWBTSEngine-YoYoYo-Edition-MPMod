@@ -40,3 +40,4 @@ for(var i=0; i<ds_map_size(self.playermap); i+=1) {
     network_send_udp( self.socketOrServer, ip, port, send_buffer, buffer_tell(send_buffer) );
     key = ds_map_find_next(self.playermap, key);
 }
+

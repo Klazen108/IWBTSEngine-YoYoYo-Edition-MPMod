@@ -33,3 +33,4 @@ for(var i=0; i<ds_map_size(global.htme_object.globalInstances); i+=1) {
     key = ds_map_find_next(global.htme_object.globalInstances, key);
 }
 return -1;
+

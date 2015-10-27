@@ -39,3 +39,4 @@ if (!is_undefined(backupEntry)) {
    ds_map_destroy(backupEntry);
    ds_map_delete(self.serverBackup,instancehash);
 }
+

@@ -45,14 +45,14 @@ if (instance_exists(inst)) {
         var inst_player = backupEntry[? "player"];      
         var inst_stayAlive = backupEntry[? "stayAlive"];
     } else {
-        if (is_undefined(inst_hash) || is_undefined(group[? name])) {
+        if (is_undefined(inst_hash) || is_undefined(group[? "name"])) {
             htme_debugger("htme_syncSingleVarGroup",htme_debug.WARNING,"CORRUPTED VARGROUP! CONTENTS: "+json_encode(group));
         } else {
             htme_debugger("htme_syncSingleVarGroup",htme_debug.WARNING,"Could not sync var-group "+group[? "name"]+" of instance "+inst_hash+". MISSING BACKUP ENTRY!");
         }
     }
 } else {
-    if (is_undefined(inst_hash) || is_undefined(group[? name])) {
+    if (is_undefined(inst_hash) || is_undefined(group[? "name"])) {
         htme_debugger("htme_syncSingleVarGroup",htme_debug.WARNING,"CORRUPTED VARGROUP! CONTENTS: "+json_encode(group));
     } else {
         htme_debugger("htme_syncSingleVarGroup",htme_debug.WARNING,"Could not sync var-group "+group[? "name"]+" of instance "+inst_hash+". MISSING INSTANCE!");
@@ -75,7 +75,7 @@ if (self.isServer) {
 }
 
 /** START SYNCING **/
-//htme_debugger("htme_syncSingleVarGroup",htme_debug.DEBUG,"Syncing a var group...");
+htme_debugger("htme_syncSingleVarGroup",htme_debug.DEBUG,"Syncing a var group...");
 /** PACKET INSTANCE_VARGROUP
  * s8 -> id
  * string -> instance hash
@@ -164,3 +164,4 @@ if (group[? "type"] == mp_type.IMPORTANT || group[? "type"] == mp_type.SMART) {
         network_send_udp( self.socketOrServer, self.server_ip, self.server_port, self.buffer, buffer_tell(self.buffer) );
     }
 }
+

@@ -45,3 +45,4 @@ for(var i=0; i<ds_map_size(self.playermap); i+=1) {
     }
     key = ds_map_find_next(self.playermap, key);
 }
+

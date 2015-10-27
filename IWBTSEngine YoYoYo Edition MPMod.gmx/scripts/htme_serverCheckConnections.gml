@@ -62,3 +62,4 @@ for(var i=0; i<ds_map_size(self.playermap); i+=1) {
     ds_map_replace(self.serverTimeoutRecv,key, timeoutRecv-1);
     key = ds_map_find_next(self.playermap, key);
 }
+

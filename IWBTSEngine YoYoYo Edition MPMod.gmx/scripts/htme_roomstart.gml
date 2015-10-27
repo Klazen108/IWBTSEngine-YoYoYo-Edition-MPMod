@@ -37,3 +37,4 @@ if (!self.isServer) {
     //Recreate destroyed instances that are currently only existing in backup
     htme_serverRecreateInstancesLocal();
 }
+
