@@ -82,9 +82,9 @@ if (instance_exists(objPlayer))
 {
     x = objPlayer.x;
     y = objPlayer.y;
-    image_xscale = global.player_xscale;
+    image_xscale = objWorld.player_xscale;
     
-    if (global.grav == 1)   //normal
+    if (objWorld.grav == 1)   //normal
     {
         image_yscale = 1;
     }

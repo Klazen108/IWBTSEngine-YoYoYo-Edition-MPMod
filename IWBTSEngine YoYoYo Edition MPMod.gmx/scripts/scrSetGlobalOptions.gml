@@ -8,13 +8,14 @@ global.noDeath = 0;         //enables god mode (toggle with Home)
 global.infJump = 0;         //enables infinite jump (toggle with End)
 global.showHitbox = 0;      //enables showing the player's hitbox (toggle with Del)
 
-global.roomCaptionDef = "I Wanna Be The Studio Engine YoYoYo Edition";  //sets default room caption (only works with the Professional version of Studio)
+global.roomCaptionDef = "I Wanna Be The Studio Engine YoYoYo Edition [MP Mod]";  //sets default room caption (only works with the Professional version of Studio)
 global.roomCaptionLast = global.roomCaptionDef;
 window_set_caption(global.roomCaptionDef);
 
-global.md5StrAdd = "Put something here!";  //sets what to add to the end of md5 input string to make the save harder to mess with, can be changed to anything, should be set to something unique and hard to predict (like setting a password)
+global.md5StrAdd = "Put something else here!";  //sets what to add to the end of md5 input string to make the save harder to mess with, can be changed to anything, should be set to something unique and hard to predict (like setting a password)
 
 global.startRoom = rStage01;    //sets which room to begin with
+global.multiplayerRoom = global.startRoom; //sets the beginning multiplayer room
 
 global.menuMode = 1;            //sets whether to use a warp room or a menu for selecting difficulty (0 = warp room, 1 = menu)
 global.menuSound = sndJump;     //sets what sound to use for navigating the main menu

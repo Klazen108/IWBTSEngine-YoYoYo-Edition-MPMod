@@ -1,19 +1,19 @@
 ///flips the current gravity
 
 //set gravity
-global.grav = -global.grav;
+objWorld.grav = -objWorld.grav;
 
 //flip the player
-with (objPlayer)
+with (scrGetLocalPlayer())
 {
     djump = 1;
     vspeed = 0;
     
-    jump = 8.5 * global.grav;
-    jump2 = 7 * global.grav;
-    gravity = 0.4 * global.grav;
+    jump = 8.5 * objWorld.grav;
+    jump2 = 7 * objWorld.grav;
+    gravity = 0.4 * objWorld.grav;
     
     scrSetPlayerMask();
     
-    y += 4 * global.grav;
+    y += 4 * objWorld.grav;
 }

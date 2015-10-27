@@ -58,7 +58,7 @@ triggered = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (!triggered &amp;&amp; global.trigger[trg])
+            <string>if (!triggered &amp;&amp; scrTriggerCheck(trg))
 {
         if (v != 0 || h != 0)
         {

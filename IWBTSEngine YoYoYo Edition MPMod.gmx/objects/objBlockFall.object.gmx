@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>if (instance_exists(objPlayer))
 {
-    if (place_meeting(x,y-objPlayer.vspeed-(global.grav),objPlayer))
+    if (place_meeting(x,y-objPlayer.vspeed-(objWorld.grav),objPlayer))
         vspeed = 2;
 }
 </string>

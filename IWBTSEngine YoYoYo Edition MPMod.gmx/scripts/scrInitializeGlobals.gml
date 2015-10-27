@@ -8,9 +8,9 @@ global.timeMilli = 0;
 global.saveRoom = 0;
 global.savePlayerX = 0;
 global.savePlayerY = 0;
-global.savePlayerXScale = 1;
-global.grav = 1;
-global.saveGrav = 1;
+objWorld.savePlayerXScale = 1;
+objWorld.grav = 1;
+objWorld.saveGrav = 1;
 
 for (var i = 8; i >= 0; i--)
 {
@@ -30,8 +30,8 @@ for (var i = 100; i >= 0; i--)
     global.trigger[i] = 0;
 }
 
-global.player_djump = 1;
-global.player_xscale = 1;
+objWorld.player_djump = 1;
+objWorld.player_xscale = 1;
 
 global.gameStarted = 0;     //determines whether the game is in progress (enables saving, restarting, etc.)
 global.noPause = 0;         //sets whether or not to allow pausing (useful for bosses to prevent desync)
@@ -55,3 +55,6 @@ display_set_gui_size(view_wview[0],view_hview[0]);  //set the correct gui size f
 randomize();    //make sure the game starts with a random seed for RNG
 
 scrSetGlobalOptions();       //initialize variables that can be changed
+
+
+global._dont_make_mp_player=false; //used in objPlayerStart to determine if we're making a new player object

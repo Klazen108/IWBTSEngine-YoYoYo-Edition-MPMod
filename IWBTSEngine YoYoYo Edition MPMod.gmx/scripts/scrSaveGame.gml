@@ -6,15 +6,16 @@ var savePosition = argument0;
 
 //saves player's current location variables if it's set to
 if (savePosition)
-{    
+{  
+    var player_object = scrGetLocalPlayer();
     global.saveRoom = room;
-    global.savePlayerX = objPlayer.x;
-    global.savePlayerY = objPlayer.y;
-    global.savePlayerXScale = global.player_xscale;
-    global.saveGrav = global.grav;
+    global.savePlayerX = player_object.x;
+    global.savePlayerY = player_object.y;
+    objWorld.savePlayerXScale = objWorld.player_xscale;
+    objWorld.saveGrav = objWorld.grav;
     
     //check if player is saving inside of a wall or in the ceiling
-    with (objPlayer)
+    with (player_object)
     {
         if (!place_free(floor(global.savePlayerX),global.savePlayerY))
         {
@@ -54,8 +55,8 @@ scrWriteBytes(f,global.difficulty,1);
 scrWriteBytes(f,global.saveRoom,2);
 scrWriteBytes(f,global.savePlayerX,3);
 scrWriteBytes(f,global.savePlayerY,3);
-scrWriteBytes(f,global.savePlayerXScale + 1,1);  //add 1 because we can't save negative numbers and global.savePlayerXScale is always either -1 or 1
-scrWriteBytes(f,global.saveGrav + 1,1);          //add 1 for the same reason
+scrWriteBytes(f,objWorld.savePlayerXScale + 1,1);  //add 1 because we can't save negative numbers and global.savePlayerXScale is always either -1 or 1
+scrWriteBytes(f,objWorld.saveGrav + 1,1);          //add 1 for the same reason
 
 for (var i = 1; i <= 8; i++)
 {

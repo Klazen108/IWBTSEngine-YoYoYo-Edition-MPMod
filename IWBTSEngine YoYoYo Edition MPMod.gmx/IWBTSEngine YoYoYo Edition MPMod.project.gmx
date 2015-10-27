@@ -144,11 +144,178 @@
       <script>scripts\scrResetWindowSize.gml</script>
       <script>scripts\scrGetMusic.gml</script>
       <script>scripts\scrPlayMusic.gml</script>
+      <script>scripts\scrGetLocalPlayer.gml</script>
+      <script>scripts\scrTriggerSet.gml</script>
+      <script>scripts\scrTriggerCheck.gml</script>
     </scripts>
     <scripts name="functions">
       <script>scripts\scrMakeShapes.gml</script>
       <script>scripts\scrMakeCircle.gml</script>
     </scripts>
+    <scripts name="multiplayer">
+      <scripts name="htme">
+        <script>scripts\htme_init.gml</script>
+        <scripts name="instance commands">
+          <script>scripts\mp_add.gml</script>
+          <script>scripts\mp_addBuiltinBasic.gml</script>
+          <script>scripts\mp_addBuiltinPhysics.gml</script>
+          <script>scripts\mp_addPosition.gml</script>
+          <script>scripts\mp_chatGetQueue.gml</script>
+          <script>scripts\mp_chatSend.gml</script>
+          <script>scripts\mp_map_syncIn.gml</script>
+          <script>scripts\mp_map_syncOut.gml</script>
+          <script>scripts\mp_setType.gml</script>
+          <script>scripts\mp_stayAlive.gml</script>
+          <script>scripts\mp_sync.gml</script>
+          <script>scripts\mp_syncAsChatHandler.gml</script>
+          <script>scripts\mp_tolerance.gml</script>
+          <script>scripts\mp_unsync.gml</script>
+        </scripts>
+        <script>scripts\htme_chatAddChannel.gml</script>
+        <script>scripts\htme_chatAddToQueue.gml</script>
+        <script>scripts\htme_chatGetMessage.gml</script>
+        <script>scripts\htme_chatGetSender.gml</script>
+        <script>scripts\htme_chatSend.gml</script>
+        <script>scripts\htme_chatSendServer.gml</script>
+        <script>scripts\htme_cleanUpInstance.gml</script>
+        <script>scripts\htme_clientBroadcastUnsync.gml</script>
+        <script>scripts\htme_clientCheckConnection.gml</script>
+        <script>scripts\htme_clientCheckConnectionNetworking.gml</script>
+        <script>scripts\htme_clientConnect.gml</script>
+        <script>scripts\htme_clientConnectionFailed.gml</script>
+        <script>scripts\htme_clientConnectNetworking.gml</script>
+        <script>scripts\htme_clientDisconnect.gml</script>
+        <script>scripts\htme_clientIsConnected.gml</script>
+        <script>scripts\htme_clientNetworking.gml</script>
+        <script>scripts\htme_clientRecieveVarGroup.gml</script>
+        <script>scripts\htme_clientStart.gml</script>
+        <script>scripts\htme_clientStop.gml</script>
+        <script>scripts\htme_clientSyncSingleVarGroup.gml</script>
+        <script>scripts\htme_commitData.gml</script>
+        <script>scripts\htme_debugger.gml</script>
+        <script>scripts\htme_debugoverlay.gml</script>
+        <script>scripts\htme_debugOverlayEnabled.gml</script>
+        <script>scripts\htme_defaultEventHandler.gml</script>
+        <script>scripts\htme_doChat.gml</script>
+        <script>scripts\htme_do_createMicro.gml</script>
+        <script>scripts\htme_doDrawInstanceTable.gml</script>
+        <script>scripts\htme_doGlobalSync.gml</script>
+        <script>scripts\htme_doInstAll.gml</script>
+        <script>scripts\htme_doInstCached.gml</script>
+        <script>scripts\htme_doInstInvisible.gml</script>
+        <script>scripts\htme_doInstVisible.gml</script>
+        <script>scripts\htme_doMain.gml</script>
+        <script>scripts\htme_doMain_new.gml</script>
+        <script>scripts\htme_doOff.gml</script>
+        <script>scripts\htme_doPlayers.gml</script>
+        <script>scripts\htme_doSignedPackets.gml</script>
+        <script>scripts\htme_doSignedPackets_new.gml</script>
+        <script>scripts\htme_doStateMain.gml</script>
+        <script>scripts\htme_doStateOff.gml</script>
+        <script>scripts\htme_dotbd.gml</script>
+        <script>scripts\htme_ds_map_find_key.gml</script>
+        <script>scripts\htme_findPlayerInstance.gml</script>
+        <script>scripts\htme_forceSyncLocalInstances.gml</script>
+        <script>scripts\htme_getData.gml</script>
+        <script>scripts\htme_getDataServer.gml</script>
+        <script>scripts\htme_getGamename.gml</script>
+        <script>scripts\htme_getLANServers.gml</script>
+        <script>scripts\htme_getPlayerNumber.gml</script>
+        <script>scripts\htme_getPlayers.gml</script>
+        <script>scripts\htme_globalGet.gml</script>
+        <script>scripts\htme_globalSet.gml</script>
+        <script>scripts\htme_globalSet_new.gml</script>
+        <script>scripts\htme_globalSetFast.gml</script>
+        <script>scripts\htme_hash.gml</script>
+        <script>scripts\htme_initSignedPacket.gml</script>
+        <script>scripts\htme_isLocal.gml</script>
+        <script>scripts\htme_isServer.gml</script>
+        <script>scripts\htme_isStarted.gml</script>
+        <script>scripts\htme_isStayAlive.gml</script>
+        <script>scripts\htme_iteratePlayers.gml</script>
+        <script>scripts\htme_iteratePlayersReset.gml</script>
+        <script>scripts\htme_networking.gml</script>
+        <script>scripts\htme_networking_searchForBroadcasts.gml</script>
+        <script>scripts\htme_playerMapIP.gml</script>
+        <script>scripts\htme_playerMapPort.gml</script>
+        <script>scripts\htme_recieveGS.gml</script>
+        <script>scripts\htme_recieveSignedPackets.gml</script>
+        <script>scripts\htme_RecieveVar.gml</script>
+        <script>scripts\htme_recieveVarGroup.gml</script>
+        <script>scripts\htme_roomend.gml</script>
+        <script>scripts\htme_roomstart.gml</script>
+        <script>scripts\htme_sendGS.gml</script>
+        <script>scripts\htme_sendGSFast.gml</script>
+        <script>scripts\htme_sendNewSignedPacket.gml</script>
+        <script>scripts\htme_sendSingleSignedPacket.gml</script>
+        <script>scripts\htme_serverAskPlayersToResync.gml</script>
+        <script>scripts\htme_serverBroadcast.gml</script>
+        <script>scripts\htme_serverBroadcastRoomChange.gml</script>
+        <script>scripts\htme_serverBroadcastUnsync.gml</script>
+        <script>scripts\htme_serverCheckConnections.gml</script>
+        <script>scripts\htme_serverCheckConnectionsNetworking.gml</script>
+        <script>scripts\htme_serverConnectNetworking.gml</script>
+        <script>scripts\htme_serverDisconnect.gml</script>
+        <script>scripts\htme_serverEventHandlerConnecting.gml</script>
+        <script>scripts\htme_serverEventHandlerDisconnecting.gml</script>
+        <script>scripts\htme_serverEventPlayerConnected.gml</script>
+        <script>scripts\htme_serverEventPlayerDisconnected.gml</script>
+        <script>scripts\htme_serverIsInRoom.gml</script>
+        <script>scripts\htme_serverKickClient.gml</script>
+        <script>scripts\htme_serverNetworking.gml</script>
+        <script>scripts\htme_serverPlayerIsInRoom.gml</script>
+        <script>scripts\htme_serverProcessKicks.gml</script>
+        <script>scripts\htme_serverProcessKicks_new.gml</script>
+        <script>scripts\htme_serverRecieveVarGroup.gml</script>
+        <script>scripts\htme_serverRecreateInstancesLocal.gml</script>
+        <script>scripts\htme_serverRemoveBackup.gml</script>
+        <script>scripts\htme_serverSendAllInstances.gml</script>
+        <script>scripts\htme_serverSendBufferToAllExcept.gml</script>
+        <script>scripts\htme_serverShutdown.gml</script>
+        <script>scripts\htme_serverStart.gml</script>
+        <script>scripts\htme_serverStop.gml</script>
+        <script>scripts\htme_serverSyncPlayersUDPHP.gml</script>
+        <script>scripts\htme_serverSyncSingleVarGroup.gml</script>
+        <script>scripts\htme_setData.gml</script>
+        <script>scripts\htme_setGamename.gml</script>
+        <script>scripts\htme_shutdown.gml</script>
+        <script>scripts\htme_signedPacketFillBuffer.gml</script>
+        <script>scripts\htme_signedPacketFillCmdMap.gml</script>
+        <script>scripts\htme_startLANsearch.gml</script>
+        <script>scripts\htme_step.gml</script>
+        <script>scripts\htme_stopLANsearch.gml</script>
+        <script>scripts\htme_string_explode.gml</script>
+        <script>scripts\htme_syncInstances.gml</script>
+        <script>scripts\htme_syncSingleVarGroup.gml</script>
+        <script>scripts\htme_syncVar.gml</script>
+      </scripts>
+      <script>scripts\totro.gml</script>
+      <scripts name="udphp">
+        <script>scripts\udphp_clientGetServerIP.gml</script>
+        <script>scripts\udphp_clientGetServerPort.gml</script>
+        <script>scripts\udphp_clientIsConnected.gml</script>
+        <script>scripts\udphp_clientNetworking.gml</script>
+        <script>scripts\udphp_clientPunch.gml</script>
+        <script>scripts\udphp_clientReadData.gml</script>
+        <script>scripts\udphp_config.gml</script>
+        <script>scripts\udphp_createClient.gml</script>
+        <script>scripts\udphp_createServer.gml</script>
+        <script>scripts\udphp_downloadNetworking.gml</script>
+        <script>scripts\udphp_downloadServerList.gml</script>
+        <script>scripts\udphp_handleerror.gml</script>
+        <script>scripts\udphp_playerListIP.gml</script>
+        <script>scripts\udphp_playerListPort.gml</script>
+        <script>scripts\udphp_readData.gml</script>
+        <script>scripts\udphp_serverCommitData.gml</script>
+        <script>scripts\udphp_serverNetworking.gml</script>
+        <script>scripts\udphp_serverPunch.gml</script>
+        <script>scripts\udphp_serverSetData.gml</script>
+        <script>scripts\udphp_stopClient.gml</script>
+        <script>scripts\udphp_stopServer.gml</script>
+        <script>scripts\udphp_string_explode.gml</script>
+      </scripts>
+    </scripts>
+    <script>scripts\scrIsMultiplayerMode.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fDefault30</font>
@@ -166,6 +333,9 @@
       <object>objects\objOptionsMenu</object>
       <object>objects\objControlsMenu</object>
       <object>objects\objDifficultyMenu</object>
+      <object>objects\obj_htme</object>
+      <object>objects\htme_obj_menu</object>
+      <object>objects\htme_obj_waitforclient</object>
     </objects>
     <objects name="player">
       <object>objects\objPlayerStart</object>
@@ -175,6 +345,7 @@
       <object>objects\objBloodEmitter</object>
       <object>objects\objBlood</object>
       <object>objects\objGameOver</object>
+      <object>objects\objPlayerMP</object>
     </objects>
     <objects name="blocks">
       <object>objects\objBlock</object>
@@ -244,6 +415,7 @@
     </objects>
     <objects name="saves">
       <object>objects\objSaveMedium</object>
+      <object>objects\objSaveStartBoss</object>
       <object>objects\objSave</object>
       <object>objects\objSaveVHard</object>
       <object>objects\objSaveMediumFlip</object>
@@ -272,6 +444,8 @@
       <room>rooms\rMenu</room>
       <room>rooms\rOptions</room>
       <room>rooms\rDifficultySelect</room>
+      <room>rooms\rMultiplayerMenu</room>
+      <room>rooms\rMultiplayerConnecting</room>
     </rooms>
     <rooms name="sample">
       <room>rooms\rStage01</room>

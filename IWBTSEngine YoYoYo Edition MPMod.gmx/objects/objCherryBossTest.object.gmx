@@ -4,7 +4,7 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>0</depth>
-  <persistent>0</persistent>
+  <persistent>-1</persistent>
   <parentName>objCherryBounce</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
@@ -25,15 +25,96 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited();
+            <string>///MPEngine Setup
+
+totalHP=2;//0;
+synced=false;
+
+if (scrIsMultiplayerMode()) {
+    if (htme_isServer()) {
+        mp_sync(); //add to the GMNet engine
+        synced=true;
+        
+        mp_addPosition("Pos",room_speed);
+        mp_setType("Pos",mp_type.SMART);
+        mp_tolerance("Pos",3);
+        
+        mp_addBuiltinBasic("basicDrawing",room_speed);
+        mp_setType("basicDrawing",mp_type.SMART);
+        mp_addBuiltinPhysics("basicPhysics",room_speed);
+        mp_setType("basicPhysics",mp_type.SMART);
+        
+        if (htme_isServer()) { //set boss stats from the server only
+            htme_globalSet("cant_restart",true,buffer_bool); //require both players to die before you can restart (unset in playerMP.destroy)
+            htme_globalSet("boss_hp",totalHP,buffer_u32); //set boss hp
+        }
+    } else {
+        instance_destroy(); //main instance on server only
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Boss setup
+event_inherited();
 
 hspeed = choose(-2,2);
 
-currentHP = 20;
+currentHP = totalHP;
 
 alarm[0] = 45;
 
 global.noPause = true;  //make it so that the player can't pause during the boss
+
+scrPlayMusic(musMegaman,true); //start the BGM when the boss is created
+
+image_xscale=2;
+image_yscale=2;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (scrIsMultiplayerMode() &amp;&amp; synced) {
+    mp_unsync();
+    
+    //allow the players to restart now
+    htme_globalSet("cant_restart",false,buffer_bool);
+}
 </string>
           </argument>
         </arguments>
@@ -60,9 +141,44 @@ global.noPause = true;  //make it so that the player can't pause during the boss
 {
     var a = instance_create(x,y,objCherry);
     a.speed = 5;
-    a.direction = point_direction(x,y,objPlayer.x,objPlayer.y);
+    
+    //pick a random player and shoot at him (in singleplayer mode, will just shoot at the player)
+    var target_player = instance_find(objPlayer,irandom(instance_number(objPlayer)-1));
+    a.direction = point_direction(x,y,target_player.x,target_player.y);
     
     alarm[0] = 45;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>event_inherited();
+
+var c_hp = htme_globalGet("boss_hp");
+if (!is_undefined(c_hp)) {
+    if (c_hp &lt;= 0) {
+        with (objBlockInvis) instance_destroy();
+        global.noPause = false;
+        instance_destroy();
+    }
 }
 </string>
           </argument>
@@ -88,19 +204,58 @@ global.noPause = true;  //make it so that the player can't pause during the boss
             <kind>1</kind>
             <string>audio_play_sound(sndBossHit,0,0);
 
-with (other)
+var deals_damage=true;
+with (other) {
+    //in multiplayer mode, don't deal damage with the bullet if it's not a local instance
+    //(when one player shoots a bullet, one will be created on everyone else's computers as well
+    // we only want the orignal bullet to deal damage, not all the copies as well)
+    with (player) if (scrIsMultiplayerMode()) if (!htme_isLocal()) deals_damage=false;
     instance_destroy();
+}
 
-currentHP -= 1;
+if (deals_damage &amp;&amp; scrIsMultiplayerMode()) {
+    currentHP = htme_globalGet("boss_hp");
+    if (is_undefined(currentHP)) {
+        currentHP=20;
+    }
+    currentHP-=1;
+    htme_globalSet("boss_hp",currentHP,buffer_u32);
+} else {
+    currentHP -= 1;
+}
 
-if (currentHP &lt;= 0)
-{
-    with (objBlockInvis)
+//death condition moved to step
+//in multiplayer mode, it may not be your bullet that kills him
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="5">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (scrIsMultiplayerMode() &amp;&amp; synced) {
+    if (htme_isLocal()) {
+        mp_unsync();
+        synced=false
+        //allow the players to restart now
+        htme_globalSet("cant_restart",false,buffer_bool);
         instance_destroy();
-    
-    global.noPause = false;
-    
-    instance_destroy();
+    }
 }
 </string>
           </argument>

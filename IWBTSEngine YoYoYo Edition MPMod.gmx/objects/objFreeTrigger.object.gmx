@@ -50,7 +50,7 @@ trg = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.trigger[trg] = 1;    //set trigger when touched by player
+            <string>if (scrTriggerCheck(trg)==0) scrTriggerSet(trg,1);
 </string>
           </argument>
         </arguments>
@@ -73,7 +73,7 @@ trg = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.trigger[trg] = 0;    //reset the trigger
+            <string>scrTriggerSet(trg,0); //reset the trigger
 </string>
           </argument>
         </arguments>

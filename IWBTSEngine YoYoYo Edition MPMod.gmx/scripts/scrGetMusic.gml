@@ -13,7 +13,7 @@ switch (room)                       //determines which song to play
         roomSong = musGuyRock;
         break;                      //make sure to always put a break after setting the song
     case rCherryBoss:
-        roomSong = musMegaman;
+        roomSong = -1;              //play nothing (music starts from boss)
         break;
     case rMiku:
         roomSong = -2;              //don't change the music in any way (the Miku object plays it)

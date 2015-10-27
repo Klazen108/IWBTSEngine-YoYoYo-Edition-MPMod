@@ -112,7 +112,7 @@
     <instance objName="objBlockInvis" x="672" y="512" name="inst_3D2C0476" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBlockInvis" x="704" y="512" name="inst_9BC5861B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBlockInvis" x="704" y="544" name="inst_0F313664" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objPlayerStart" x="96" y="480" name="inst_97646333" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objPlayerStart" x="64" y="544" name="inst_97646333" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSpikeUp" x="160" y="544" name="inst_19CD1537" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSpikeUp" x="224" y="544" name="inst_1451ACA6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSpikeUp" x="288" y="544" name="inst_6071A1A5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -130,7 +130,7 @@
     <instance objName="objMovingPlatform" x="480" y="320" name="inst_5B8F5ACC" locked="0" code="vspeed = -3;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objMovingPlatform" x="544" y="320" name="inst_8A0EA2D4" locked="0" code="vspeed = 3;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objMovingPlatform" x="608" y="320" name="inst_0381C9AB" locked="0" code="vspeed = -3;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objCherryBossTest" x="640" y="224" name="inst_9C963672" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objSaveStartBoss" x="96" y="544" name="inst_A1BF418B" locked="0" code="boss_x = 640&#xA;boss_y = 224&#xA;boss_obj = objCherryBossTest&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bAllTiles" x="64" y="576" w="32" h="32" xo="0" yo="96" id="10001724" name="inst_D234B1DA" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

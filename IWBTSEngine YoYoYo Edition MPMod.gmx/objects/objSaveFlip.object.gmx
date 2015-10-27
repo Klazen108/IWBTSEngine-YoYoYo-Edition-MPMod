@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>///save the game (if flipped)
 
-if (canSave &amp;&amp; instance_exists(objPlayer) &amp;&amp; global.grav == -1)
+if (canSave &amp;&amp; instance_exists(objPlayer) &amp;&amp; objWorld.grav == -1)
 {
     canSave = 0;
     alarm[0] = 30;

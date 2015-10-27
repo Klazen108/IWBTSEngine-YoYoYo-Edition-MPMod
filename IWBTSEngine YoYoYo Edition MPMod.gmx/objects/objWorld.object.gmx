@@ -100,7 +100,16 @@ if (global.gameStarted)
     
     if (!global.gamePaused) //check if the game is currently paused
     {
-        if (keyboard_check_pressed(global.restartbutton))
+        var can_restart=true;
+        
+        if (scrIsMultiplayerMode()) { //if in multiplayer mode
+            var mp_reset_block = htme_globalGet("cant_restart"); //check if the "can't restart flag" exists
+            if (!is_undefined(mp_reset_block)) { //if so
+                can_restart = !mp_reset_block; //set CAN restart to NOT CAN'T restart (sry but I wanted 'can restart' to be the default flag
+            }
+        }
+        
+        if (keyboard_check_pressed(global.restartbutton) &amp;&amp; can_restart)
         {
             //stop death music
             audio_stop_sound(global.gameOverMusic);

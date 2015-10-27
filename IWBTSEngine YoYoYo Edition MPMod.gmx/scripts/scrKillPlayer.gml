@@ -1,6 +1,13 @@
 //kills the player
+//call this from the local player's instance scope only!!!
 
-if (instance_exists(objPlayer) && !global.noDeath)
+//if we're in a multiplayer area
+if (instance_exists(obj_htme)) {
+    //only kill the player if it's the local instance
+    if (!htme_isLocal()) exit;
+}
+
+if (!global.noDeath)
 {
     if (global.gameStarted) //normal death
     {
@@ -22,11 +29,8 @@ if (instance_exists(objPlayer) && !global.noDeath)
             }
         }
         
-        with (objPlayer)
-        {
-            instance_create(x,y,objBloodEmitter);
-            instance_destroy();
-        }
+        instance_create(x,y,objBloodEmitter);
+        instance_destroy();
         
         instance_create(0,0,objGameOver);
         
@@ -36,11 +40,10 @@ if (instance_exists(objPlayer) && !global.noDeath)
     }
     else    //death in the difficulty select room, restart the room
     {
-        with(objPlayer)
-            instance_destroy();
+        instance_destroy();
         
-        global.player_djump = 1;
-        global.player_xscale = 1;
+        objWorld.player_djump = 1;
+        objWorld.player_xscale = 1;
             
         room_restart();
     }

@@ -25,8 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if((objPlayer.vspeed*global.grav) &gt; 2)
-    objPlayer.vspeed = 2*global.grav;
+            <string>if((objPlayer.vspeed*objWorld.grav) &gt; 2)
+    objPlayer.vspeed = 2*objWorld.grav;
 </string>
           </argument>
         </arguments>

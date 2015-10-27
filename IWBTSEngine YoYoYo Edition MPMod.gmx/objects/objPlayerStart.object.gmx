@@ -25,10 +25,27 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (!instance_exists(objPlayer))
-{
-    instance_create(x+17,y+23,objPlayer);
+            <string>if (instance_exists(obj_htme)) {
+    if (!instance_exists(objPlayerMP)) {
+        instance_create(x+17,y+23,objPlayerMP);
+    } else {
+        //check all the players - if there isn't a local one then create one
+        already_exists=false;
+        with (objPlayerMP) if (htme_isLocal()) already_exists=true;
+        if (!already_exists &amp;&amp; !global._dont_make_mp_player) instance_create(x+17,y+23,objPlayerMP);
+    
+        //see loadgame script - htme_isLocal isn't set on an instance for a frame, so we manually indicate whether or
+        //not we've created a local instance
+        global._dont_make_mp_player=false; 
+    }
+} else {
+    if (!instance_exists(objPlayer))
+    {
+        instance_create(x+17,y+23,objPlayer);
+    }
 }
+
+instance_destroy();
 </string>
           </argument>
         </arguments>

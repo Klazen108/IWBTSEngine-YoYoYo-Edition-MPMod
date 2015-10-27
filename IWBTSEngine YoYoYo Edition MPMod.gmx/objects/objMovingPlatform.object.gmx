@@ -4,10 +4,121 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>1</depth>
-  <persistent>0</persistent>
+  <persistent>-1</persistent>
   <parentName>objPlatform</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>synced=false;
+if (scrIsMultiplayerMode()) {
+    if (htme_isServer()) {
+        mp_sync();
+        synced=true;
+        
+        mp_addPosition("Pos",room_speed);
+        mp_setType("Pos",mp_type.SMART);
+        
+        mp_addBuiltinBasic("basicDrawing",room_speed/3);
+        mp_setType("basicDrawing",mp_type.SMART);
+        mp_addBuiltinPhysics("basicPhysics",room_speed/3);
+        mp_setType("basicPhysics",mp_type.SMART);
+        
+        mp_add("yspeed","yspeed",buffer_f32,room_speed/3);
+        mp_setType("yspeed",mp_type.SMART);
+        mp_add("sprite_index","sprite_index",buffer_u32,room_speed);
+        mp_setType("sprite_index",mp_type.SMART);
+    } else {
+        instance_destroy();
+    }
+}
+
+event_inherited();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//sync the inputs into the engine
+if (scrIsMultiplayerMode()) {
+    //yspeed = mp_map_syncOut("yspeed",yspeed);
+    sprite_index = mp_map_syncOut("sprite_index",sprite_index);
+}
+    
+if (vspeed &lt; 0)
+{
+    yspeed = vspeed;
+    vspeed = 0;
+}
+if (yspeed &gt; 0) 
+{
+    vspeed = yspeed;
+    yspeed = 0;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//sync the inputs into the engine
+if (scrIsMultiplayerMode()) {
+    //mp_map_syncIn("yspeed",yspeed);
+    mp_map_syncIn("sprite_index",sprite_index);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -45,7 +156,7 @@
     
     y += yspeed;
     
-    if (global.grav == 1)   //normal
+    if (objWorld.grav == 1)   //normal
     {
         with (instance_place(x,y-2,objPlayer))
         {
@@ -61,18 +172,33 @@
             if (place_free(x+other.hspeed,y)) x += other.hspeed;
         }
     }
-    
-    if (vspeed &lt; 0)
-    {
-        yspeed = vspeed;
-        vspeed = 0;
-    }
-    if (yspeed &gt; 0) 
-    {
-        vspeed = yspeed;
-        yspeed = 0;
-    }
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="5">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (scrIsMultiplayerMode() &amp;&amp; synced) {
+    if (htme_isLocal()) mp_unsync();
+}
+instance_destroy();
 </string>
           </argument>
         </arguments>

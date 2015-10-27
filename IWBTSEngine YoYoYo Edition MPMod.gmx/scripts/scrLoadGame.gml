@@ -15,8 +15,8 @@ global.difficulty = scrReadBytes(f,1);
 global.saveRoom = scrReadBytes(f,2);
 global.savePlayerX = scrReadBytes(f,3);
 global.savePlayerY = scrReadBytes(f,3);
-global.savePlayerXScale = scrReadBytes(f,1) - 1;    //subtract 1 because 1 was added when saved
-global.saveGrav = scrReadBytes(f,1) - 1;            //subtract 1 for the same reason
+objWorld.savePlayerXScale = scrReadBytes(f,1) - 1;    //subtract 1 because 1 was added when saved
+objWorld.saveGrav = scrReadBytes(f,1) - 1;            //subtract 1 for the same reason
 
 for (var i = 1; i <= 8; i++)
 {
@@ -65,8 +65,8 @@ global.gameStarted = 1; //sets game in progress (enables saving, restarting, etc
 global.noPause = 0;
 global.autosave = 0;
 
-global.player_xscale = global.savePlayerXScale;
-global.grav = global.saveGrav;
+objWorld.player_xscale = objWorld.savePlayerXScale;
+objWorld.grav = objWorld.saveGrav;
 
 for (var i = 1; i <= 8; i++)
 {
@@ -76,8 +76,12 @@ for (var i = 1; i <= 8; i++)
 
 global.gameClear = global.saveGameClear;
 
-global.player_djump = 1;    //make sure to give djump when spawning
+objWorld.player_djump = 1;    //make sure to give djump when spawning
 
-instance_create(global.savePlayerX,global.savePlayerY,objPlayer);
+if (instance_exists(obj_htme)) {
+    instance_create(global.savePlayerX,global.savePlayerY,objPlayerMP);
+    global._dont_make_mp_player=true;
+}
+else instance_create(global.savePlayerX,global.savePlayerY,objPlayer);
 
 room_goto(global.saveRoom);

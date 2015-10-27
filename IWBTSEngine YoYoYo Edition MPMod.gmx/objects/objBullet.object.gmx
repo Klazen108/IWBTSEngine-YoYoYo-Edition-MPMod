@@ -25,8 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hspeed = global.player_xscale * 16;
-alarm[0] = 40;
+            <string>alarm[0] = 40;
 </string>
           </argument>
         </arguments>

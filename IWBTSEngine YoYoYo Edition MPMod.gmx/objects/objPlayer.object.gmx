@@ -27,11 +27,11 @@
             <kind>1</kind>
             <string>frozen = 0; //sets if player can move or not
 
-jump = 8.5 * global.grav; //set how fast the player jumps
-jump2 = 7 * global.grav; //sets how fast the player double jumps
-gravity = 0.4 * global.grav; //player gravity
+jump = 8.5 * objWorld.grav; //set how fast the player jumps
+jump2 = 7 * objWorld.grav; //sets how fast the player double jumps
+gravity = 0.4 * objWorld.grav; //player gravity
 
-djump = global.player_djump; //allow the player to double jump as soon as he spawns
+djump = objWorld.player_djump; //allow the player to double jump as soon as he spawns
 maxSpeed = 3; //max horizontal velocity
 maxVspeed = 9; //max vertical velocity
 image_speed = 0.2; //initial speed of animation
@@ -47,6 +47,8 @@ if (global.autosave) //save the game if currently set to autosave
     scrSaveGame(1);
     global.autosave = 0;
 }
+
+i_xscale = 1;
 </string>
           </argument>
         </arguments>
@@ -69,10 +71,38 @@ if (global.autosave) //save the game if currently set to autosave
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.player_djump = djump;    //set global variable for when player respawns (this stores whether or not player can djump during a room transition)
+            <string>objWorld.player_djump = djump;    //set global variable for when player respawns (this stores whether or not player can djump during a room transition)
 
 with (objBow)
     instance_destroy();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>p_jump = keyboard_check_pressed(global.jumpbutton);
+r_jump = keyboard_check_released(global.jumpbutton);
+k_jump = keyboard_check(global.jumpbutton);
+p_shoot = keyboard_check_pressed(global.shotbutton);
+d_left = keyboard_check/*_direct*/(global.leftbutton);
+d_right = keyboard_check/*_direct*/(global.rightbutton);
 </string>
           </argument>
         </arguments>
@@ -96,18 +126,18 @@ with (objBow)
           <argument>
             <kind>1</kind>
             <string>//check button presses
-var L = keyboard_check_direct(global.leftbutton);
-var R = keyboard_check_direct(global.rightbutton);
+var L = d_left;
+var R = d_right;
 
 var h = R;
 if (h == 0) {h = -L;}
 
 if (frozen) {h = 0;}    //don't move if frozen
 
-var slipBlockTouching = instance_place(x,y+(4*global.grav),objSlipBlock);   //check if near a slip block
+var slipBlockTouching = instance_place(x,y+(4*objWorld.grav),objSlipBlock);   //check if near a slip block
 
 //vine checks
-var notOnBlock = (place_free(x,y+(global.grav)));
+var notOnBlock = (place_free(x,y+(objWorld.grav)));
 var onVineL = (place_meeting(x-1,y,objWalljumpL) &amp;&amp; notOnBlock);
 var onVineR = (place_meeting(x+1,y,objWalljumpR) &amp;&amp; notOnBlock);
 
@@ -115,7 +145,7 @@ if (h != 0)  //player is moving
 {
     if (!onVineR &amp;&amp; !onVineL)   //make sure not currently touching a vine
     {
-        global.player_xscale = h;
+        i_xscale = h;
     }
     if ((h == -1 &amp;&amp; !onVineR) || (h == 1 &amp;&amp; !onVineL))
     {
@@ -160,15 +190,15 @@ else    //player is not moving
 
 if (!onPlatform)    //check if standing on a platform
 {
-    if((vspeed * global.grav) &lt; -0.05) {sprite_index = sprPlayerJump;}
-    else if((vspeed * global.grav) &gt; 0.05) {sprite_index = sprPlayerFall;}
+    if((vspeed * objWorld.grav) &lt; -0.05) {sprite_index = sprPlayerJump;}
+    else if((vspeed * objWorld.grav) &gt; 0.05) {sprite_index = sprPlayerFall;}
 }
 else
 {
-    if (!place_meeting(x,y+(4*global.grav),objPlatform)) {onPlatform = 0;}
+    if (!place_meeting(x,y+(4*objWorld.grav),objPlatform)) {onPlatform = 0;}
 }
 
-var slideBlockTouching = instance_place(x,y+(global.grav),objSlideBlock);   //check if on a slide block
+var slideBlockTouching = instance_place(x,y+(objWorld.grav),objSlideBlock);   //check if on a slide block
 
 if (slideBlockTouching != noone)    //on a slide block, start moving with it
     hspeed += slideBlockTouching.h;
@@ -177,47 +207,46 @@ if (abs(vspeed) &gt; maxVspeed) {vspeed = sign(vspeed)*maxVspeed;} //check if mo
 
 if (!frozen)    //check if frozen before doing anything
 {
-    if(keyboard_check_pressed(global.shotbutton))
+    if(p_shoot)
         scrPlayerShoot();
-    if(keyboard_check_pressed(global.jumpbutton))
+    if(p_jump)
         scrPlayerJump();
-    if(keyboard_check_released(global.jumpbutton))
+    if(r_jump)
         scrPlayerVJump();
     if(keyboard_check_pressed(global.suicidebutton))
         scrKillPlayer();
 }
 
-if (global.adAlign &amp;&amp; place_meeting(x,y+(global.grav),objBlock) &amp;&amp; !frozen)  // A/D align
+if (global.adAlign &amp;&amp; place_meeting(x,y+(objWorld.grav),objBlock) &amp;&amp; !frozen)  // A/D align
 {
     if (keyboard_check_pressed(global.aAlignButton)) {hspeed -= 1;}
     if (keyboard_check_pressed(global.dAlignButton)) {hspeed += 1;}
 }
-
 
 //walljumps
 
 if (onVineL || onVineR)
 {
     if (onVineR)
-        global.player_xscale = -1;
+        i_xscale = -1;
     else
-        global.player_xscale = 1;
+        i_xscale = 1;
     
-    vspeed = 2 * global.grav;
+    vspeed = 2 * objWorld.grav;
     sprite_index = sprPlayerSliding;
     image_speed = 1/2;
     
     //pressed away from the vine
-    if (onVineL &amp;&amp; keyboard_check_pressed(global.rightbutton)) || (onVineR &amp;&amp; keyboard_check_pressed(global.leftbutton))
+    if (onVineL &amp;&amp; d_right) || (onVineR &amp;&amp; d_left)
     {
-        if (keyboard_check(global.jumpbutton))  //jumping off vine
+        if (k_jump)  //jumping off vine
         {
             if (onVineR)
                 hspeed = -15;
             else
                 hspeed = 15;
             
-            vspeed = -9 * global.grav;
+            vspeed = -9 * objWorld.grav;
             audio_play_sound(sndWallJump,0,0);
             sprite_index = sprPlayerJump;
         }
@@ -232,6 +261,11 @@ if (onVineL || onVineR)
         }
     }
 }
+
+
+if (scrIsMultiplayerMode()) { if (htme_isLocal()) objWorld.player_xscale = i_xscale; } //multiplayer
+else objWorld.player_xscale = i_xscale; //singleplayer
+
 </string>
           </argument>
         </arguments>
@@ -277,7 +311,7 @@ if (onVineL || onVineR)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (global.grav == 1)   //normal
+            <string>if (objWorld.grav == 1)   //normal
 {
     if (y-vspeed/2 &lt;= other.y)
     {
@@ -329,7 +363,7 @@ else    //flipped
             <kind>1</kind>
             <string>if(!place_free(x+hspeed,y))
 {
-    if (global.grav == 1)   //normal
+    if (objWorld.grav == 1)   //normal
     {
         if(hspeed &lt;= 0){move_contact_solid(180,abs(hspeed));}
         if(hspeed &gt; 0){move_contact_solid(0,abs(hspeed));}
@@ -344,7 +378,7 @@ else    //flipped
  
 if(!place_free(x,y+vspeed))
 {
-    if (global.grav == 1)   //normal
+    if (objWorld.grav == 1)   //normal
     {
         if(vspeed &lt;= 0){move_contact_solid(90,abs(vspeed));}
         if(vspeed &gt; 0){move_contact_solid(270,abs(vspeed));djump=1;}
@@ -387,6 +421,29 @@ if (!place_free(x+hspeed,y+vspeed)) {hspeed = 0;}
         </arguments>
       </action>
     </event>
+    <event eventtype="8" enumb="72">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>i_xscale = objWorld.player_xscale; //set up the xscale for the draw event (overriden in MP player)
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
@@ -409,10 +466,10 @@ if (!place_free(x+hspeed,y+vspeed)) {hspeed = 0;}
 var drawX = x;
 var drawY = y;
 
-if (global.grav == -1)      //need to draw the player a pixel off in the y-axis when flipped for some reason
+if (objWorld.grav == -1)      //need to draw the player a pixel off in the y-axis when flipped for some reason
     drawY += 1;
 
-draw_sprite_ext(sprite_index,image_index,drawX,drawY,image_xscale*global.player_xscale,image_yscale*global.grav,image_angle,image_blend,image_alpha);
+draw_sprite_ext(sprite_index,image_index,drawX,drawY,image_xscale*i_xscale,image_yscale*objWorld.grav,image_angle,image_blend,image_alpha);
 
 //draw the hitbox
 if (global.showHitbox)

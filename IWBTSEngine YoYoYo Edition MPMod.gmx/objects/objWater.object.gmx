@@ -28,7 +28,7 @@
             <string>with (objPlayer) 
 {
     djump = 1;
-    if ((vspeed*global.grav) &gt; 2) {vspeed = 2 * global.grav;}
+    if ((vspeed*objWorld.grav) &gt; 2) {vspeed = 2 * objWorld.grav;}
 }
 </string>
           </argument>

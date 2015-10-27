@@ -29,9 +29,15 @@
 timer = 0;
 curve = 0;
 
-scrPlayMusic(musMiku,false);    //song is "Hatsune Miku - Tho (ニナ)"
+//don't play the song just yet, we'll do that in the step event
+//scrPlayMusic(musMiku,false);    //song is "Hatsune Miku - Tho (ニナ)"
+played_music=false; //music started yes/no
 
 global.noPause = true;  //make it so that the player can't pause during the boss
+
+//wait for all players to enter the room if in multiplayer mode
+wait_for_players=scrIsMultiplayerMode();
+
 </string>
           </argument>
         </arguments>
@@ -54,7 +60,20 @@ global.noPause = true;  //make it so that the player can't pause during the boss
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (instance_exists(objPlayer)) //make sure player is alive before doing attacks
+            <string>if (wait_for_players) {
+    var playerCount = ds_list_size(htme_getPlayers()); //get the number of players connected
+    if (instance_number(objPlayerMP)==playerCount) {
+        wait_for_players=false; //start when all players are here
+    }
+    else exit; //skip the step event if the players aren't all here yet
+}
+
+if (!played_music) {
+    scrPlayMusic(musMiku,false);    //song is "Hatsune Miku - Tho (ニナ)"
+    played_music=true;
+}
+
+if (instance_exists(objPlayer)) //make sure player is alive before doing attacks
 {
     timer += 1; //increment the timer
         

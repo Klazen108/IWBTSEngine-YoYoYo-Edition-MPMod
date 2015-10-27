@@ -71,7 +71,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_yscale = global.grav;
+            <string>image_yscale = objWorld.grav;
 </string>
           </argument>
         </arguments>

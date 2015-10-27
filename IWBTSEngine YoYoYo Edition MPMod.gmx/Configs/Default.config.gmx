@@ -21,7 +21,7 @@
     <option_android_arch_x86>True</option_android_arch_x86>
     <option_android_build_version>0</option_android_build_version>
     <option_android_color_depth>0</option_android_color_depth>
-    <option_android_display_name>I Wanna Be The Studio Engine YoYoYo Edition</option_android_display_name>
+    <option_android_display_name>I Wanna Be The Studio Engine YoYoYo Edition MP Mod</option_android_display_name>
     <option_android_google_analytics_enable>false</option_android_google_analytics_enable>
     <option_android_google_play>0</option_android_google_play>
     <option_android_google_play_id></option_android_google_play_id>
@@ -49,7 +49,7 @@
     <option_android_ouya_icon>Configs\Default\android\icons\ouyaIcon.png</option_android_ouya_icon>
     <option_android_package_company>companyname</option_android_package_company>
     <option_android_package_domain>com</option_android_package_domain>
-    <option_android_package_product>I_Wanna_Be_The_Studio_Engine_YoYoYo_Edition</option_android_package_product>
+    <option_android_package_product>I_Wanna_Be_The_Studio_Engine_YoYoYo_Edition_MPMod</option_android_package_product>
     <option_android_permission_flags>8</option_android_permission_flags>
     <option_android_pocketchange_enable>0</option_android_pocketchange_enable>
     <option_android_pocketchange_id></option_android_pocketchange_id>
@@ -72,7 +72,7 @@
     <option_changeresolution>false</option_changeresolution>
     <option_closeesc>true</option_closeesc>
     <option_colordepth>0</option_colordepth>
-    <option_display_name>I Wanna Be The Studio Engine YoYoYo Edition</option_display_name>
+    <option_display_name>I Wanna Be The Studio Engine YoYoYo Edition MP Mod</option_display_name>
     <option_displayerrors>True</option_displayerrors>
     <option_facebook_app_display_name></option_facebook_app_display_name>
     <option_facebook_appid></option_facebook_appid>
@@ -306,7 +306,7 @@
     <option_use_new_audio>True</option_use_new_audio>
     <option_variableerrors>False</option_variableerrors>
     <option_version>100</option_version>
-    <option_version_build>0</option_version_build>
+    <option_version_build>2</option_version_build>
     <option_version_company></option_version_company>
     <option_version_copyright></option_version_copyright>
     <option_version_description></option_version_description>
@@ -323,7 +323,7 @@
     <option_win8_analytics_id></option_win8_analytics_id>
     <option_win8_build_version>0</option_win8_build_version>
     <option_win8_certificate_location>Windows8_TemporaryKey.pfx</option_win8_certificate_location>
-    <option_win8_display_name>YoYoYo_Engine</option_win8_display_name>
+    <option_win8_display_name>YoYoYo_Engine_MPMod</option_win8_display_name>
     <option_win8_internet_capable>0</option_win8_internet_capable>
     <option_win8_interpolate>-1</option_win8_interpolate>
     <option_win8_landscape_allowed>-1</option_win8_landscape_allowed>
@@ -351,7 +351,7 @@
     <option_win8_texture_page>1024</option_win8_texture_page>
     <option_win8_wide_logo>Configs\Default\Windows8\logos\logo310.png</option_win8_wide_logo>
     <option_windowcolor>clBlack</option_windowcolor>
-    <option_windows_build_version>0</option_windows_build_version>
+    <option_windows_build_version>1</option_windows_build_version>
     <option_windows_company_info></option_windows_company_info>
     <option_windows_copyright_info></option_windows_copyright_info>
     <option_windows_description_info></option_windows_description_info>
