@@ -298,6 +298,7 @@
       <script>scripts\totro.gml</script>
     </scripts>
     <script>scripts\scrIsMultiplayerMode.gml</script>
+    <script>scripts\scrIsLocalPlayer.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fDefault30</font>

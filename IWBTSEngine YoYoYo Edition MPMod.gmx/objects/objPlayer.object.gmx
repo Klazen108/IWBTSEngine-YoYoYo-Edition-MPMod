@@ -49,6 +49,7 @@ if (global.autosave) //save the game if currently set to autosave
 }
 
 i_xscale = 1;
+grav = 1;
 </string>
           </argument>
         </arguments>
@@ -439,6 +440,7 @@ if (!place_free(x+hspeed,y+vspeed)) {hspeed = 0;}
           <argument>
             <kind>1</kind>
             <string>i_xscale = objWorld.player_xscale; //set up the xscale for the draw event (overriden in MP player)
+grav = objWorld.grav;
 </string>
           </argument>
         </arguments>
@@ -466,10 +468,10 @@ if (!place_free(x+hspeed,y+vspeed)) {hspeed = 0;}
 var drawX = x;
 var drawY = y;
 
-if (objWorld.grav == -1)      //need to draw the player a pixel off in the y-axis when flipped for some reason
+if (grav == -1)      //need to draw the player a pixel off in the y-axis when flipped for some reason
     drawY += 1;
 
-draw_sprite_ext(sprite_index,image_index,drawX,drawY,image_xscale*i_xscale,image_yscale*objWorld.grav,image_angle,image_blend,image_alpha);
+draw_sprite_ext(sprite_index,image_index,drawX,drawY,image_xscale*i_xscale,image_yscale*grav,image_angle,image_blend,image_alpha);
 
 //draw the hitbox
 if (global.showHitbox)

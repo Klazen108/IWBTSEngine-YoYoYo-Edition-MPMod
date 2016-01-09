@@ -27,10 +27,10 @@
             <kind>1</kind>
             <string>mp_sync(); //add to the GMNet engine
 
-mp_addPosition("Pos",0);
+mp_addPosition("Pos",1);
 mp_setType("Pos",mp_type.FAST);
 
-mp_add("controls","p_jump,r_jump,k_jump,p_shoot,d_left,d_right",buffer_bool,0);
+mp_add("controls","p_jump,r_jump,k_jump,p_shoot,d_left,d_right",buffer_bool,1);
 mp_setType("controls",mp_type.FAST);
 
 mp_addBuiltinBasic("basicDrawing",10);
@@ -41,8 +41,8 @@ mp_setType("basicPhysics",mp_type.SMART);
 mp_add("playerName","name",buffer_string,60*room_speed);
 mp_setType("playerName",mp_type.SMART);
 
-mp_add("i_xscale","i_xscale",buffer_s16,1);
-mp_setType("i_xscale",mp_type.SMART);
+mp_add("other","i_xscale,grav",buffer_s16,1);
+mp_setType("other",mp_type.SMART);
 
 p_jump = false
 r_jump = false
@@ -120,6 +120,7 @@ d_left = mp_map_syncOut("d_left", d_left);
 d_right = mp_map_syncOut("d_right", d_right);
 
 i_xscale = mp_map_syncOut("i_xscale",i_xscale);
+grav = mp_map_syncOut("grav",grav);
 </string>
           </argument>
         </arguments>
@@ -157,6 +158,7 @@ mp_map_syncIn("d_left",d_left);
 mp_map_syncIn("d_right",d_right);
 
 mp_map_syncIn("i_xscale",i_xscale);
+mp_map_syncIn("grav",grav);
 </string>
           </argument>
         </arguments>

@@ -1,5 +1,5 @@
 ///flips the current gravity
-
+show_debug_message("scrFlipGrav");
 //set gravity
 objWorld.grav = -objWorld.grav;
 
